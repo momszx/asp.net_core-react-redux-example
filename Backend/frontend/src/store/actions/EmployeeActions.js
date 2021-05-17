@@ -23,16 +23,10 @@ export const fetchEmployeeStart=()=>{
 export const fetchEmployee=()=>{
     return dispatch=>{
         dispatch(fetchEmployeeStart())
-        axios.get('/Employee')
-            .then(res=>{
-                const fetchedEmployees=[]
-                for (let key in res.data){
-                    fetchedEmployees.push({
-                        ...res.data[key],
-                        id:key
-                    })
-                }
-                dispatch(fetchEmployeeSuccess(fetchedEmployees))
+        fetch('Employee')
+            .then(response=> response.json())
+            .then(data=>{
+                dispatch(fetchEmployeeSuccess(data))
             })
             .catch(err=>{
                 dispatch(fetchEmployeeFail(err));

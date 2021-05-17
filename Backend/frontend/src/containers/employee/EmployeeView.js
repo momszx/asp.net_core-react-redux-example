@@ -20,7 +20,7 @@ class employeeView extends Component{
                         <th>Name</th>
                         <th>Address</th>
                     </tr>
-                    {/*this.props.emp.map(emp=>(
+                    {/*this.props.map(emp=>(
                         <tr>
                             <td>{emp.id}</td>
                             <td>{emp.name}</td>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "a7eTDm4UWHf7qM9nvNB+znnugdkWjx1NWRU3xlqN8p5xA7VmzXFcb1zzMnaVOA68Lfq+AtPJ4UiSkgaOskDETA==",
+  "dgSpecHash": "wi3QZlxd+D+RItfWUGPIrjceymjHF5alNg/Hb1l6JTw3P/UH4QrqE/7+A1BF5UsO4H6Mrv0C31ns+VdpR7TeRQ==",
   "success": true,
   "projectFilePath": "D:\\Git\\asp.net_core-react-redux-example\\Backend\\Backend.csproj",
   "expectedPackageFiles": [
@@ -9,7 +9,12 @@
     "C:\\Users\\momsz\\.nuget\\packages\\k4os.compression.lz4\\1.1.11\\k4os.compression.lz4.1.1.11.nupkg.sha512",
     "C:\\Users\\momsz\\.nuget\\packages\\k4os.compression.lz4.streams\\1.1.11\\k4os.compression.lz4.streams.1.1.11.nupkg.sha512",
     "C:\\Users\\momsz\\.nuget\\packages\\k4os.hash.xxhash\\1.0.6\\k4os.hash.xxhash.1.0.6.nupkg.sha512",
+    "C:\\Users\\momsz\\.nuget\\packages\\microsoft.aspnetcore.spaservices.extensions\\5.0.6\\microsoft.aspnetcore.spaservices.extensions.5.0.6.nupkg.sha512",
     "C:\\Users\\momsz\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\momsz\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\5.0.0\\microsoft.extensions.fileproviders.abstractions.5.0.0.nupkg.sha512",
+    "C:\\Users\\momsz\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\5.0.0\\microsoft.extensions.fileproviders.physical.5.0.0.nupkg.sha512",
+    "C:\\Users\\momsz\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\5.0.0\\microsoft.extensions.filesystemglobbing.5.0.0.nupkg.sha512",
+    "C:\\Users\\momsz\\.nuget\\packages\\microsoft.extensions.primitives\\5.0.0\\microsoft.extensions.primitives.5.0.0.nupkg.sha512",
     "C:\\Users\\momsz\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.0\\microsoft.netcore.platforms.3.1.0.nupkg.sha512",
     "C:\\Users\\momsz\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\momsz\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
