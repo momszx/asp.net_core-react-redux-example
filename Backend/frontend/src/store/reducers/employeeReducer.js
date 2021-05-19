@@ -54,7 +54,7 @@ const removeEmployeeSuccess = (state, action) => {
     })
 }
 
-const reducer = (state = initialState, action) => {
+const employeeReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_LIST_EMPLOYEE:
             return fetchEmployeeSuccess(state, action)
@@ -78,4 +78,4 @@ const reducer = (state = initialState, action) => {
             return state
     }
 };
-export default reducer;
+export default employeeReducer;

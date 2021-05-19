@@ -5,14 +5,14 @@ import {Provider} from "react-redux";
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import reducer from './store/reducers/reducer'
+import employeeReducer from './store/reducers/employeeReducer'
 import thunk from 'redux-thunk';
 
 
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({
-    employee: reducer
+    employee: employeeReducer
 
 });
 

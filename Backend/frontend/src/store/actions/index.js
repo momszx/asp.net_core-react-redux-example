@@ -1,3 +1,8 @@
+import {addEmployee, removeEmployee, updateEmployee} from "./EmployeeActions";
+
 export {
-    fetchEmployee
+    fetchEmployee,
+    addEmployee,
+    updateEmployee,
+    removeEmployee
 } from './EmployeeActions'
