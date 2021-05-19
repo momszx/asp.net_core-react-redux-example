@@ -1,45 +1,49 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import * as actionTypes from '../../store/actions/actionsTypes';
-import * as actions from'../../store/actions'
+import * as actions from '../../store/actions'
 
-class employeeView extends Component{
+class employeeView extends Component {
 
-    componentDidMount () {
+    componentDidMount() {
         this.props.onFetchEmployee();
     }
+
     render() {
-        return(
+        let employees = "Loading..."
+        if (!this.props.loading&&this.props.employees!=null) {
+            this.props.employees.map(strResult => (
+                <tr>
+                    <td>{strResult.id}</td>
+                    <td>{strResult.name}</td>
+                    <td>{strResult.address}</td>
+                </tr>
+            ))
+        }
+        return (
             <>
-                <button /*onClick={this.props.onFetchEmployee()}*/>
-                    lekérdez
-                </button>
-                <table >
+                <table>
                     <tr>
                         <th>ID</th>
                         <th>Name</th>
                         <th>Address</th>
                     </tr>
-                    {/*this.props.map(emp=>(
-                        <tr>
-                            <td>{emp.id}</td>
-                            <td>{emp.name}</td>
-                            <td>{emp.address}</td>
-                        </tr>
-                    ))*/}
+                    {employees}
                 </table>
             </>
         );
     }
 }
-const  mapStareToProps =state =>{
-    return{
-        emp:state.employees
-    }
-}
-const  mapDispatchToProps =dispatch =>{
-    return{
-        onFetchEmployee:()=>dispatch(actions.fetchEmployee())
+
+const mapStareToProps = state => {
+    return {
+        employees: state.employees,
+        loading: state.loading
     };
-}
-export default connect(mapStareToProps,mapDispatchToProps)(employeeView);
+};
+const mapDispatchToProps = dispatch => {
+    return {
+        onFetchEmployee: () => dispatch(actions.fetchEmployee())
+    };
+};
+export default connect(mapStareToProps, mapDispatchToProps)(employeeView);

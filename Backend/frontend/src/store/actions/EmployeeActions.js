@@ -2,34 +2,133 @@ import * as actionTypes from './actionsTypes';
 import axios from "../../axiosBase";
 
 
-export const fetchEmployeeSuccess=(employees)=>{
-    return{
-        type:actionTypes.FETCH_LIST_EMPLOYEE,
-        employees:employees
+export const fetchEmployeeSuccess = (employees) => {
+    return {
+        type: actionTypes.FETCH_LIST_EMPLOYEE,
+        employees: employees
     }
 }
-export const fetchEmployeeFail=(error)=>{
-    return{
-        type:actionTypes.FETCH_EMPLOYEE_FAIL,
-        error:error
+export const EmployeeFail = (error) => {
+    return {
+        type: actionTypes.EMPLOYEE_FAIL,
+        error: error
     };
 };
-export const fetchEmployeeStart=()=>{
+export const fetchEmployeeStart = () => {
     return {
-        type:actionTypes.FETCH_EMPLOYEE_START
+        type: actionTypes.FETCH_EMPLOYEE_START
     };
 };
 
-export const fetchEmployee=()=>{
-    return dispatch=>{
+export const fetchEmployee = () => {
+    return dispatch => {
         dispatch(fetchEmployeeStart())
         fetch('Employee')
-            .then(response=> response.json())
-            .then(data=>{
+            .then(response => response.json())
+            .then(data => {
                 dispatch(fetchEmployeeSuccess(data))
             })
-            .catch(err=>{
-                dispatch(fetchEmployeeFail(err));
+            .catch(err => {
+                dispatch(EmployeeFail(err));
+            })
+    }
+}
+export const addEmployeeStart = () => {
+    return {
+        type: actionTypes.ADD_EMPLOYEE_START
+    }
+}
+export const addEmployeeSuccess = () => {
+    return {
+        type: actionTypes.ADD_EMPLOYEE
+    }
+}
+export const addEmployee = (employee) => {
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let requestOptions = {
+        method: 'POST',
+        headers: myHeaders,
+        body: employee,
+        redirect: 'follow'
+    };
+    return dispatch => {
+        dispatch(addEmployeeStart())
+        fetch('Employee', requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                if (result === 200) {
+                    dispatch(addEmployeeSuccess());
+                } else EmployeeFail(result);
+            })
+            .catch(err => {
+                dispatch(EmployeeFail(err));
+            })
+    }
+}
+export const updateEmployeeSuccess = () => {
+    return {
+        type: actionTypes.UPDATE_EMPLOYEE
+    }
+}
+export const updateEmployeeStart = () => {
+    return {
+        type: actionTypes.UPDATE_EMPLOYEE_START
+    }
+}
+export const updateEmployee = (employee) => {
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: employee,
+        redirect: 'follow'
+    };
+    return dispatch => {
+        dispatch(updateEmployeeStart())
+        fetch('Employee', requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                if (result === 200) {
+                    dispatch(updateEmployeeSuccess());
+                } else EmployeeFail(result);
+            })
+            .catch(err => {
+                dispatch(EmployeeFail(err));
+            })
+    }
+}
+export const removeEmployeeSuccess = () => {
+    return {
+        type: actionTypes.REMOVE_EMPLOYEE
+    }
+}
+export const removeEmployeeStart = () => {
+    return {
+        type: actionTypes.REMOVE_EMPLOYEE_START
+    }
+}
+export const removeEmployee = (employee) => {
+    let myHeaders = new Headers();
+    myHeaders.append("Content-Type", "application/json");
+    let requestOptions = {
+        method: 'PUT',
+        headers: myHeaders,
+        body: employee,
+        redirect: 'follow'
+    };
+    return dispatch => {
+        dispatch(removeEmployeeStart())
+        fetch('Employee', requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                if (result === 200) {
+                    dispatch(removeEmployeeSuccess());
+                } else EmployeeFail(result);
+            })
+            .catch(err => {
+                dispatch(EmployeeFail(err));
             })
     }
 }

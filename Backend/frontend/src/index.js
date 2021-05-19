@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {createStore,applyMiddleware, compose, combineReducers } from "redux";
+import {createStore, applyMiddleware, compose, combineReducers} from "redux";
 import {Provider} from "react-redux";
 import './index.css';
 import App from './App';
@@ -21,9 +21,9 @@ const store = createStore(rootReducer, composeEnhancers(
 ));
 ReactDOM.render(
     <Provider store={store}>
-        <App />
+        <App/>
     </Provider>,
-  document.getElementById('root')
+    document.getElementById('root')
 );
 
 // If you want to start measuring performance in your app, pass a function

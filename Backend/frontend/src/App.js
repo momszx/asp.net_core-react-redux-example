@@ -3,11 +3,11 @@ import './App.css';
 import EmployeeView from "./containers/employee/EmployeeView";
 
 function App() {
-  return (
-    <>
-      <EmployeeView/>
-    </>
-  );
+    return (
+        <>
+            <EmployeeView/>
+        </>
+    );
 }
 
 export default App;
