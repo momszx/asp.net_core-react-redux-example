@@ -1,20 +1,21 @@
 ﻿import React, { Component } from 'react';
 
 class AddEmployee extends Component {
+    
     state = {
-        employee:{
-            id:0,
-            name: '',
+            name: 'BélA',
             address: ''
-        }
     }
 
     nameChangedHandler = (event) => {
+        console.log('név '+event.target.value)
         this.setState({name: event.target.value});
+        console.log(this.state.name)
     }
 
-    ageChangedHandler = (event) => {
-        this.setState({age: event.target.value});
+    addressChangedHandler = (event) => {
+        
+        this.setState({address: event.target.value});
     }
 
     render () {
@@ -24,13 +25,13 @@ class AddEmployee extends Component {
                     type="text"
                     placeholder="Name"
                     onChange={this.nameChangedHandler}
-                    value={this.state.employee.name} />
+                />
                 <input
                     type="text"
                     placeholder="address"
-                    onChange={this.ageChangedHandler}
-                    value={this.state.employee.address} />
-                <button onClick={() => this.props.addEmployee(this.state.employee)}>Add Employee</button>
+                    onChange={this.addressChangedHandler}
+                />
+                <button onClick={() => this.props.addEmployee(JSON.stringify({employee:{id:0,name:this.state.name,address: this.state.address}}))}>Add Employee</button>
             </div>
         );
     }

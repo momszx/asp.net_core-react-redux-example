@@ -12,7 +12,6 @@ class employeeView extends Component {
 
     render() {
         let employees = "Loading..."
-        console.log(this.props.loading)
         if (!this.props.loading ) {
             employees= this.props.employees.map(strResult => (
                 <tr>

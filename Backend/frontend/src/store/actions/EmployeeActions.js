@@ -23,7 +23,7 @@ export const fetchEmployeeStart = () => {
 export const fetchEmployee = () => {
     return dispatch => {
         dispatch(fetchEmployeeStart())
-        fetch('Employee')
+        fetch('/Employee')
             .then(response => response.json())
             .then(data => {
                 dispatch(fetchEmployeeSuccess(data))
@@ -46,26 +46,31 @@ export const addEmployeeSuccess = () => {
 export const addEmployee = (employee) => {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+    let raw =JSON.stringify({
+        "id":0,
+        "name":employee.name,
+        "address":employee.address
+    })
     let requestOptions = {
         method: 'POST',
         headers: myHeaders,
-        body: employee,
+        body: raw,
         redirect: 'follow'
     };
     
     return dispatch => {
         dispatch(addEmployeeStart())
-        fetch('Employee', requestOptions)
+        fetch('/Employee', requestOptions)
             .then(response => response.text())
             .then(result => {
-                if (result.meta.code === 200) {
+                if (result === 200) {
                     dispatch(addEmployeeSuccess());
-                } else EmployeeFail(result.meta.code);
+                } else EmployeeFail(result);
             })
             .catch(err => {
                 dispatch(EmployeeFail(err));
             })
-        dispatch(fetchEmployee())
+        setTimeout(() => {  dispatch(fetchEmployee()) }, 1000);
     }
 }
 export const updateEmployeeSuccess = () => {
@@ -92,7 +97,7 @@ export const updateEmployee = (employee) => {
         fetch('Employee', requestOptions)
             .then(response => response.text())
             .then(result => {
-                if (result.meta.code === 200) {
+                if (result === 200) {
                     dispatch(updateEmployeeSuccess());
                 } else EmployeeFail(result.meta.code);
             })
@@ -100,7 +105,7 @@ export const updateEmployee = (employee) => {
             .catch(err => {
                 dispatch(EmployeeFail(err));
             })
-        dispatch(fetchEmployee())
+        setTimeout(() => {  dispatch(fetchEmployee()) }, 1000);
     }
 }
 export const removeEmployeeSuccess = () => {
@@ -127,7 +132,7 @@ export const removeEmployee = (employee) => {
         fetch('Employee', requestOptions)
             .then(response => response.text())
             .then(result => {
-                if (result.meta.code === 200) {
+                if (result === 200) {
                     dispatch(removeEmployeeSuccess());
                 } else EmployeeFail(result.meta.code);
             })
@@ -135,6 +140,6 @@ export const removeEmployee = (employee) => {
             .catch(err => {
                 dispatch(EmployeeFail(err));
             })
-        dispatch(fetchEmployee())
+        setTimeout(() => {  dispatch(fetchEmployee()) }, 1000);
     }
 }
