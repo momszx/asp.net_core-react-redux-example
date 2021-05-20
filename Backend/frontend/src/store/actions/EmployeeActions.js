@@ -52,18 +52,20 @@ export const addEmployee = (employee) => {
         body: employee,
         redirect: 'follow'
     };
+    
     return dispatch => {
         dispatch(addEmployeeStart())
         fetch('Employee', requestOptions)
             .then(response => response.text())
             .then(result => {
-                if (result === 200) {
+                if (result.meta.code === 200) {
                     dispatch(addEmployeeSuccess());
-                } else EmployeeFail(result);
+                } else EmployeeFail(result.meta.code);
             })
             .catch(err => {
                 dispatch(EmployeeFail(err));
             })
+        dispatch(fetchEmployee())
     }
 }
 export const updateEmployeeSuccess = () => {
@@ -90,13 +92,15 @@ export const updateEmployee = (employee) => {
         fetch('Employee', requestOptions)
             .then(response => response.text())
             .then(result => {
-                if (result === 200) {
+                if (result.meta.code === 200) {
                     dispatch(updateEmployeeSuccess());
-                } else EmployeeFail(result);
+                } else EmployeeFail(result.meta.code);
             })
+            //.then(dispatch(fetchEmployee()))
             .catch(err => {
                 dispatch(EmployeeFail(err));
             })
+        dispatch(fetchEmployee())
     }
 }
 export const removeEmployeeSuccess = () => {
@@ -123,12 +127,14 @@ export const removeEmployee = (employee) => {
         fetch('Employee', requestOptions)
             .then(response => response.text())
             .then(result => {
-                if (result === 200) {
+                if (result.meta.code === 200) {
                     dispatch(removeEmployeeSuccess());
-                } else EmployeeFail(result);
+                } else EmployeeFail(result.meta.code);
             })
+            //.then(dispatch(fetchEmployee()))
             .catch(err => {
                 dispatch(EmployeeFail(err));
             })
+        dispatch(fetchEmployee())
     }
 }

@@ -13,8 +13,8 @@ class employeeView extends Component {
     render() {
         let employees = "Loading..."
         console.log(this.props.loading)
-        if (!this.props.loading && this.props.employees != null) {
-            this.props.employees.map(strResult => (
+        if (!this.props.loading ) {
+            employees= this.props.employees.map(strResult => (
                 <tr>
                     <td>{strResult.id}</td>
                     <td>
@@ -32,8 +32,7 @@ class employeeView extends Component {
                         />
 
                     </td>
-                    <button onClick={this.props.onRemoveEmployee(strResult.id)}>Töröl</button>
-                    <button onClick={this.props.onUpdateEmployee(strResult.id)}>Frissités</button>
+
                 </tr>
             ))
         }
@@ -55,14 +54,14 @@ class employeeView extends Component {
 
 const mapStareToProps = state => {
     return {
-        employees: state.employees,
-        loading: state.loading
+        employees: state.employee.employees,
+        loading: state.employee.loading
     };
 };
 const mapDispatchToProps = dispatch => {
     return {
         onFetchEmployee: () => dispatch(actions.fetchEmployee()),
-        onAddEmployee: () => dispatch(actions.addEmployee()),
+        onAddEmployee: (employee) => dispatch(actions.addEmployee(employee)),
         onRemoveEmployee: () => dispatch(actions.removeEmployee()),
         onUpdateEmployee: () => dispatch(actions.updateEmployee())
     };

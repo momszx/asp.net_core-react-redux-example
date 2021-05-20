@@ -24,12 +24,12 @@ class AddEmployee extends Component {
                     type="text"
                     placeholder="Name"
                     onChange={this.nameChangedHandler}
-                    value={this.state.name} />
+                    value={this.state.employee.name} />
                 <input
                     type="text"
-                    placeholder="Age"
+                    placeholder="address"
                     onChange={this.ageChangedHandler}
-                    value={this.state.age} />
+                    value={this.state.employee.address} />
                 <button onClick={() => this.props.addEmployee(this.state.employee)}>Add Employee</button>
             </div>
         );
