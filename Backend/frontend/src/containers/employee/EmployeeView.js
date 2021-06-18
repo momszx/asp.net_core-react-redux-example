@@ -37,7 +37,7 @@ class employeeView extends Component {
         }
         return (
             <>
-                <AddEmployee addEmployee={this.props.onAddEmployee}/>
+                <AddEmployee />
                 <table>
                     <tr>
                         <th>ID</th>
@@ -60,7 +60,6 @@ const mapStareToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchEmployee: () => dispatch(actions.fetchEmployee()),
-        onAddEmployee: (employee) => dispatch(actions.addEmployee(employee)),
         onRemoveEmployee: () => dispatch(actions.removeEmployee()),
         onUpdateEmployee: () => dispatch(actions.updateEmployee())
     };

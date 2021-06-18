@@ -59,6 +59,7 @@ export const addEmployee = (employee) => {
     };
     
     return dispatch => {
+        console.log(raw)
         dispatch(addEmployeeStart())
         fetch('/Employee', requestOptions)
             .then(response => response.text())
