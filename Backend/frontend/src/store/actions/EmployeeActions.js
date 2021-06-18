@@ -85,12 +85,18 @@ export const updateEmployeeStart = () => {
 export const updateEmployee = (employee) => {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+    let raw =JSON.stringify({
+        "id":employee.id,
+        "name":employee.name,
+        "address":employee.address
+    })
     let requestOptions = {
         method: 'PUT',
         headers: myHeaders,
-        body: employee,
+        body: raw,
         redirect: 'follow'
     };
+    console.log(raw)
     return dispatch => {
         dispatch(updateEmployeeStart())
         fetch('Employee', requestOptions)
@@ -132,13 +138,12 @@ export const removeEmployee = (id) => {
         redirect: 'follow'
     };
     return dispatch => {
-        console.log(id)
+
         dispatch(removeEmployeeStart())
         fetch('Employee', requestOptions)
 
             .then(response => response.text())
             .then(result => {
-                console.log(result)
                 if (result === 200) {
                     dispatch(removeEmployeeSuccess());
                 } else EmployeeFail(result.meta.code);

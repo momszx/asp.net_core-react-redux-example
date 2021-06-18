@@ -100,7 +100,7 @@ namespace Backend.Controllers
         }
 
         [HttpDelete]
-        public int DeleteEmployeeById(Employee employee)
+        public int DeleteEmployeeById(int id)
         {
             try
             {
@@ -109,7 +109,7 @@ namespace Backend.Controllers
                     cnn.Open();
                     MySqlCommand command;
                     MySqlDataReader dataReader;
-                    var sql = string.Format("delete from employees where id={0};", employee.id);
+                    var sql = string.Format("delete from employees where id={0};", id);
                     command = new MySqlCommand(sql, cnn);
                     dataReader = command.ExecuteReader();
                     cnn.Close();
