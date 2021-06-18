@@ -17,21 +17,20 @@ class employeeView extends Component {
                 <tr>
                     <td>{strResult.id}</td>
                     <td>
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            value={strResult.name}
-                        />
+                        {strResult.name}
+
                     </td>
                     <td>
-                        <input
-                            type="text"
-                            placeholder="Name"
-                            value={strResult.address}
-                        />
+                        {strResult.address}
 
                     </td>
+                    <td>
+                        <button onClick={()=>console.log("Modify"+strResult.name)}>Modify</button>
 
+                    </td>
+                    <td>
+                        <button onClick={()=>this.props.onRemoveEmployee(strResult.id)}>Delete</button>
+                    </td>
                 </tr>
             ))
         }
@@ -43,6 +42,8 @@ class employeeView extends Component {
                         <th>ID</th>
                         <th>Name</th>
                         <th>Address</th>
+                        <th>Mod</th>
+                        <th>Delete</th>
                     </tr>
                     {employees}
                 </table>
@@ -60,8 +61,8 @@ const mapStareToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         onFetchEmployee: () => dispatch(actions.fetchEmployee()),
-        onRemoveEmployee: () => dispatch(actions.removeEmployee()),
-        onUpdateEmployee: () => dispatch(actions.updateEmployee())
+        onRemoveEmployee: (id) => dispatch(actions.removeEmployee(id)),
+        onUpdateEmployee: (employee) => dispatch(actions.updateEmployee(employee))
     };
 };
 export default connect(mapStareToProps, mapDispatchToProps)(employeeView);

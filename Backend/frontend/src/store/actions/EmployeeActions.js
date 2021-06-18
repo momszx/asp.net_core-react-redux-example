@@ -57,9 +57,7 @@ export const addEmployee = (employee) => {
         body: raw,
         redirect: 'follow'
     };
-    
     return dispatch => {
-        console.log(raw)
         dispatch(addEmployeeStart())
         fetch('/Employee', requestOptions)
             .then(response => response.text())
@@ -119,20 +117,28 @@ export const removeEmployeeStart = () => {
         type: actionTypes.REMOVE_EMPLOYEE_START
     }
 }
-export const removeEmployee = (employee) => {
+export const removeEmployee = (id) => {
     let myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
+    let raw =JSON.stringify({
+        "id":id,
+        "name":"",
+        "address":""
+    })
     let requestOptions = {
-        method: 'PUT',
+        method: 'DELETE',
         headers: myHeaders,
-        body: employee,
+        body: raw,
         redirect: 'follow'
     };
     return dispatch => {
+        console.log(id)
         dispatch(removeEmployeeStart())
         fetch('Employee', requestOptions)
+
             .then(response => response.text())
             .then(result => {
+                console.log(result)
                 if (result === 200) {
                     dispatch(removeEmployeeSuccess());
                 } else EmployeeFail(result.meta.code);

@@ -99,8 +99,8 @@ namespace Backend.Controllers
             }
         }
 
-        [HttpDelete("id")]
-        public int DeleteEmployeeById(int id)
+        [HttpDelete]
+        public int DeleteEmployeeById(Employee employee)
         {
             try
             {
@@ -109,10 +109,10 @@ namespace Backend.Controllers
                     cnn.Open();
                     MySqlCommand command;
                     MySqlDataReader dataReader;
-                    var sql = string.Format("delete from employees where id={0};", id);
+                    var sql = string.Format("delete from employees where id={0};", employee.id);
                     command = new MySqlCommand(sql, cnn);
                     dataReader = command.ExecuteReader();
-                    cnn.Clone();
+                    cnn.Close();
                     return 200;
                 }
             }
@@ -137,7 +137,7 @@ namespace Backend.Controllers
                         , employee.id, employee.name, employee.address);
                     command = new MySqlCommand(sql, cnn);
                     dataReader = command.ExecuteReader();
-                    cnn.Clone();
+                    cnn.Close();
                     return 200;
                 }
             }
@@ -161,7 +161,7 @@ namespace Backend.Controllers
                         , employee.name, employee.address, employee.id);
                     command = new MySqlCommand(sql, cnn);
                     dataReader = command.ExecuteReader();
-                    cnn.Clone();
+                    cnn.Close();
                     return 200;
                 }
             }
